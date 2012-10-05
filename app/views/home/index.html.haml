@@ -1,0 +1,17 @@
+.create_sighting
+
+.bird_sightings
+
+:javascript
+  var sightings = new bird_sighting.collections.bird_sightings()
+  sightings.fetch({
+    success: function(collection){
+      _.each(collection.models, function(sighting){
+        var v = new bird_sighting.views.bird_sighting({model: sighting})
+        $('.bird_sightings').append(v.render().el)
+      })
+    }
+  })
+
+  var create_sighting = new bird_sighting.views.create_sighting()
+  $('.create_sighting').append(create_sighting.render().el)

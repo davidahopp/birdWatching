@@ -30,7 +30,7 @@ set :rvm_type, :user
 set :bundle_without,  [:development, :test]
 
 # if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
+after "deploy:restart", "deploy:cleanup"
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
@@ -78,20 +78,6 @@ namespace :db do
     run "cd #{release_path} && bundle exec rake RAILS_ENV=production db:current_version > migration_version.txt"
   end
 
-  #
-  #before :deploy do
-  #  # Get the topmost migration that has been run:
-  #  run "rake db:current_version > migration_version.txt"
-  #end
-  #
-  #after 'deploy:rollback' do
-  #  run "rake db:migrate VERSION=`cat migration_version.txt`"
-  #end
-  #
-  #after :deploy do
-  #  # Clean up now that we don't need it....
-  #  run "unlink migration_version.txt"
-  #end
 
 end
 
@@ -104,15 +90,3 @@ before "deploy:restart", "assets:cleanup"
 before "deploy:rollback", "db:rollback"
 after "deploy:rollback:revision", "bundle:install"
 after "deploy:update_code", "bundle:install"
-
-#namespace :deploy do
-#  desc "Restarting mod_rails with restart.txt"
-#  task :restart, :roles => :app, :except => { :no_release => true } do
-#    run "touch #{current_path}/tmp/restart.txt"
-#  end
-#
-#  [:start, :stop].each do |t|
-#    desc "#{t} task is a no-op with mod_rails"
-#    task t, :roles => :app do ; end
-#  end
-#end

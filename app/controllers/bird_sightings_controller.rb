@@ -2,17 +2,33 @@ class BirdSightingsController < ApplicationController
 
   def create
 
-    puts params
+    sighting = BirdSighting.new(params[:bird_sighting])
+    sighting.save
 
-    render :text => "created"
+    respond_to do |format|
+      format.json { render :json => sighting}
+    end
 
   end
 
   def index
 
-    puts "SHOWING all"
+    sightings = BirdSighting.all
 
-    render :text => "here they are"
+    respond_to do |format|
+      format.json { render :json => sightings}
+    end
+
+  end
+
+  def destroy
+
+    sighting = BirdSighting.where(id: params[:id]).first
+    sighting.destroy
+
+    respond_to do |format|
+      format.json { render :json => {success: true, data: nil, message: 'destroyed'}}
+    end
 
   end
 

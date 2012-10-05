@@ -1,7 +1,6 @@
 BirdWatching::Application.routes.draw do
 
-  root :to => 'welcome#index'
+  root :to => 'home#index'
 
-  resources :bird_sightings, :only => [:create, :show, :index]
-
+  resources :bird_sightings
 end

@@ -6,7 +6,10 @@ gem 'rails', '3.2.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-
+gem 'haml_assets'
+gem 'haml', :git => 'https://github.com/infbio/haml.git', :branch => 'form_for_fix'
+gem 'ejs'
+gem 'sass'
 
 # Gems used only for assets and not required
 # in production environments by default.

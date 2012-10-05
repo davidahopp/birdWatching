@@ -1,3 +1,38 @@
 // Place all the styles related to the birdSightings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.bird_sightings{
+  margin-left: 10px;
+  margin-top: 20px;
+
+  .title{
+    float: left;
+    margin-right: 10px;
+  }
+
+  .actions{
+    font-size: 10px;
+    float: left;
+    margin-top: 6px;
+  }
+
+  .details{
+    clear: both;
+    margin-left: 15px;
+  }
+
+}
+
+.create_sighting{
+  .actions{
+    margin-top: 10px;
+    font-size: 10px;
+  }
+
+
+}
+
+.hover{
+  cursor: pointer;
+}
